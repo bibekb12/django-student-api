@@ -13,15 +13,16 @@ class StudentView(APIView):
     #     serial = StudentSerializer(result, many= True)
     #     return Response({"status":"success","students":serial.data},status = status.HTTP_200_OK)
     
-    def get(self,request,id):
-        result = Students.objects.get(id=id)
+    def get(self,request,id=None):
+        
         if id:
+            result = Students.objects.get(id=id)
             serial = StudentSerializer(result)
             return Response({'success':"success","students":serial.data}, status= 200)
-        else:
-            result = Students.objects.all()
-            serial = StudentSerializer(result, many= True)
-            return Response({"status":"suceess","students":serial.data}, status=200)
+        
+        result = Students.objects.all()
+        serial = StudentSerializer(result, many= True)
+        return Response({"status":"suceess","students":serial.data}, status=200)
     
     def post(self,request):
         serial=StudentSerializer(data=request.data)
