@@ -3,10 +3,10 @@ from .models import Students
 
 class StudentSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(max_length=100,required=True)
-    last_name = serializers.CharField(max_lenght=100, required= True)
+    last_name = serializers.CharField(max_length=100, required= True)
     address = serializers.CharField(max_length=100, required= True)
     roll_number = serializers.IntegerField()
-    mobile = serializers.IntegerField(max_length=100, required = True)
+    mobile = serializers.CharField(max_length=10, required = True)
 
     class Meta:
         model= Students
